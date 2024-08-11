@@ -34,7 +34,7 @@ jobs:
       uses: peter-evans/create-pull-request@v3
       with:
         commit-message: Update Terraform Plan
-        branch: Development
+        branch: DevelopmentCargill
         token: ${{ secrets.TOKEN }}
         title: 'Terraform Plan Update'
 
@@ -44,6 +44,6 @@ jobs:
     - name: Enable Auto-Merge
       uses: peter-evans/enable-pull-request-automerge@v2
       with:
-        branch: Development
+        branch: DevelopmentCargill
         token: ${{ secrets.TOKEN }}
         pull-request-number: ${{ github.event.pull_request.number }}
