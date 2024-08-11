@@ -1,6 +1,6 @@
 name: Terraform Plan & apply the Development  environment
 on:
-  pull_request: 
+  pull_request:
     branches:
       - Development
   push:
@@ -36,7 +36,7 @@ jobs:
         commit-message: Update Terraform Plan
         branch: DevelopmentCargill
         token: ${{ secrets.TOKEN }}
-        title: 'Terraform Plan Update'
+        title: 'Terraform Plan'
 
     - name: Terraform applies when the pull request is merged in the repo
       run: terraform apply -auto-approve
