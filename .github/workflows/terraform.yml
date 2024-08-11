@@ -1,6 +1,6 @@
 name: Terraform Plan & apply the Development  environment
 on:
-  pull_request:
+  pull_request: 
     branches:
       - Development
   push:
