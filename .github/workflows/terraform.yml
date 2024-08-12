@@ -42,8 +42,8 @@ jobs:
       run: terraform apply -auto-approve
 
     - name: Enable Auto-Merge
-      uses: peter-evans/enable-pull-request-automerge@v2
+      uses: peter-evans/enable-pull-request-automerge@v3
       with:
-        branch: DevelopmentCargill
         token: ${{ secrets.TOKEN }}
-        pull-request-number: ${{ github.event.pull_request.number }}
+        branch: DevelopmentCargill
+        pull-request-number: ${{ github.event.pull_issue.number }}
