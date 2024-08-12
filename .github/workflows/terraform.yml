@@ -34,6 +34,7 @@ jobs:
         commit-message: Update Terraform Plan
         Environments: Development
         token: ${{ secrets.TOKEN }}
+        branch: development
         title: 'Terraform Plan'
 
      
@@ -43,6 +44,7 @@ jobs:
     - name: Enable Auto-Merge
       uses: peter-evans/enable-pull-request-automerge@v3
       with:
+        branch: development
         token: ${{ secrets.TOKEN }}
         Environments: Development
         pull-request-number: ${{ github.event.pull_issue.number }}
