@@ -1,6 +1,6 @@
 name: Terraform Plan & apply the Development  environment
 on:
-  pull_request: 
+  pull_request:
     branches: 
       - main 
   push:
@@ -53,6 +53,3 @@ jobs:
 
     - name: Terraform destroy applied after the infra is up & Running
       run: terraform destroy
-
-    
-
