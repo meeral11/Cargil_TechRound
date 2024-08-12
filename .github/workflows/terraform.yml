@@ -32,7 +32,7 @@ jobs:
       uses: peter-evans/create-pull-request@v3
       with:
         commit-message: Update Terraform Plan
-        branch: DevelopmentCargill
+        Environments: DevelopmentCargill
         token: ${{ secrets.TOKEN }}
         title: 'Terraform Plan'
 
@@ -44,7 +44,7 @@ jobs:
       uses: peter-evans/enable-pull-request-automerge@v3
       with:
         token: ${{ secrets.TOKEN }}
-        branch: DevelopmentCargill
+        Environments: DevelopmentCargill
         pull-request-number: ${{ github.event.pull_issue.number }}
 
     
@@ -52,4 +52,4 @@ jobs:
       run: terraform apply -auto-approve 
 
     - name: Terraform destroy applied after the infra is up & Running
-      run: terraform destroy
+      run: terraform destroy -auto-approve
