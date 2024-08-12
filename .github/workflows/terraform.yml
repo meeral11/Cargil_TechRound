@@ -1,0 +1,49 @@
+name: Terraform Plan & apply the Development  environment
+on:
+  pull_request:
+    branches:
+      - Development 
+  push:
+     branches:
+       - Development
+jobs:
+  terraform: 
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout code
+      uses: actions/checkout@v4
+    - name: Terraform installer
+      uses: autero1/action-terraform@v3.0.1
+      with:
+         terraform-version: "1.3.6"
+    - name: Azure CLI Login
+      uses: azure/login@v1
+      with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: Register Resource Providers
+      run: |
+          az provider register --namespace Microsoft.Network
+          az provider register --namespace Microsoft.TimeSeriesInsights
+          az provider register --namespace Microsoft.Compute
+    - name: Initialize Terraform
+      run: terraform init
+    - name: Terraform plan when the pull request is raised in the repo
+      run: terraform plan
+
+    - name: create pull request
+      uses: peter-evans/create-pull-request@v3
+      with:
+        commit-message: Update Terraform Plan
+        branch: DevelopmentCargill
+        token: ${{ secrets.TOKEN }}
+        title: 'Terraform Plan'
+
+    - name: Terraform applies when the pull request is merged in the repo
+      run: terraform apply -auto-approve
+
+    - name: Enable Auto-Merge
+      uses: peter-evans/enable-pull-request-automerge@v2
+      with:
+        branch: DevelopmentCargill
+        token: ${{ secrets.TOKEN }}
+        pull-request-number: ${{ github.event.pull_request.number }}
