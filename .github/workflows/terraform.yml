@@ -2,10 +2,10 @@ name: Terraform Plan & apply the Development  environment
 on:
   pull_request:
     branches:
-      - Development 
+      - main 
   push:
      branches:
-       - Development
+       - main
 jobs:
   terraform: 
     runs-on: ubuntu-latest
