@@ -32,9 +32,11 @@ jobs:
     - name: create pull request
       uses: peter-evans/create-pull-request@v3
       with:
-        commit-message: Update Terraform Plan
         token: ${{ secrets.TOKEN }}
-        title: 'Terraform Plan'
+        commit-message: Terraform Plan
+        title: 'Terraform Plan Pull Request'
+        labels: PullRequest_PlanCompile
+        branch: "PullRequest_PlanCompile_AutoPR_${{ github.ref }}"
 
      
     - name: Terraform plan when the pull request is raised in the repo
