@@ -35,7 +35,7 @@ jobs:
         commit-message: Update Terraform Plan
         # Environments: Development
         token: ${{ secrets.TOKEN }}
-        branch: development
+        # branch: development
         title: 'Terraform Plan'
 
      
@@ -45,7 +45,7 @@ jobs:
     - name: Enable Auto-Merge
       uses: peter-evans/enable-pull-request-automerge@v3
       with:
-        branch: development
+        # branch: development
         token: ${{ secrets.TOKEN }}
         # Environments: Development
         pull-request-number: ${{ github.event.pull_issue.number }}
@@ -54,5 +54,5 @@ jobs:
     - name: Terraform applies when the pull request is merged in the repo
       run: terraform apply -auto-approve 
 
-   # - name: Terraform destroy applied after the infra is up & Running
-   #   run: terraform destroy -auto-approve
+    - name: Terraform destroy applied after the infra is up & Running
+      run: terraform destroy -auto-approve
