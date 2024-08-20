@@ -9,6 +9,7 @@ on:
 jobs:
   terraform: 
     runs-on: ubuntu-latest
+    environment: Development
     steps:
     - name: checkout code
       uses: actions/checkout@v4
@@ -32,7 +33,7 @@ jobs:
       uses: peter-evans/create-pull-request@v3
       with:
         commit-message: Update Terraform Plan
-        Environments: Development
+        # Environments: Development
         token: ${{ secrets.TOKEN }}
         branch: development
         title: 'Terraform Plan'
@@ -46,12 +47,12 @@ jobs:
       with:
         branch: development
         token: ${{ secrets.TOKEN }}
-        Environments: Development
+        # Environments: Development
         pull-request-number: ${{ github.event.pull_issue.number }}
 
     
     - name: Terraform applies when the pull request is merged in the repo
       run: terraform apply -auto-approve 
 
-    - name: Terraform destroy applied after the infra is up & Running
-      run: terraform destroy -auto-approve
+   # - name: Terraform destroy applied after the infra is up & Running
+   #   run: terraform destroy -auto-approve
