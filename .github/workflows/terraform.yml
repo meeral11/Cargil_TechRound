@@ -35,8 +35,8 @@ jobs:
         token: ${{ secrets.TOKEN }}
         commit-message: Terraform Plan
         title: 'Terraform Plan Pull Request'
-        # labels: DevelopmentCargill
-        # branch: "DevelopmentCargill_AutoPR_${{ github.ref }}"
+        labels: create-pull-request/patch
+        branch: "create-pull-request/patch_${{ github.ref }}"
 
      
     - name: Terraform plan when the pull request is raised in the repo
