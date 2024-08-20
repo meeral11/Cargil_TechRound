@@ -1,4 +1,4 @@
-name: Terraform Plan & apply the Development  environment
+name: Terraform Plan & apply the Development Environment
 on:
   pull_request: 
     branches: 
