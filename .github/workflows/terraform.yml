@@ -2,7 +2,7 @@ name: Terraform Plan & apply the Development  environment
 on:
   pull_request: 
     branches: 
-      - main 
+      - main
   push:
      branches:
        - '**'
