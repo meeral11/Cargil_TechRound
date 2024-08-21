@@ -52,5 +52,5 @@ jobs:
     - name: Terraform applies when the pull request is merged in the repo
       run: terraform apply -auto-approve 
 
-    - name: Terraform destroy applied after the infra is up & Running
-      run: terraform destroy -auto-approve
+    # - name: Terraform destroy applied after the infra is up & Running
+    #   run: terraform destroy -auto-approve
